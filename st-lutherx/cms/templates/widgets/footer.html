@@ -1,0 +1,74 @@
+## mako
+<%page expression_filter="h"/>
+<%namespace name='static' file='../static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+from django.urls import reverse
+from datetime import datetime
+from django.conf import settings
+import pytz
+from cms.djangoapps.contentstore.config.waffle import waffle, ENABLE_ACCESSIBILITY_POLICY_PAGE
+from openedx.core.djangolib.markup import HTML, Text
+%>
+
+<div class="wrapper-footer wrapper">
+  <div class="loading" style="display: none;">
+    <ul class="loading-dots">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <footer class="primary" role="contentinfo">
+    <div class="footer-content-primary">
+      <div class="colophon">
+        <div class="company-info">
+          <p class="info">
+            <a href="#">
+              ## this is just a placeholder logo
+              ## feel free to change this logo to your own by replacing "logo.png" with your own logo
+              <img alt="organization logo placeholder" src='${static.url("images/logo-white.png")}' width="200" />
+            </a>
+          </p>
+          <p class="info">${_("St. LutherX is an initiative of St. Luther University, Inc., a tax-exempt 501(c)(3) nonprofit organization based in McKinney, Texas.")}</p>
+        </div>
+        <img height="32" width="88" src="https://www.w3.org/WAI/wcag2AA-blue-v.svg" alt="Level Double-A conformance, W3C WAI Web Content Accessibility Guidelines 2.0">
+      </div>
+    </div>
+
+    <div class="copyright-area" aria-label="${_("Legal")}">
+      <p class="copyright">&copy; ${_("Edly")} ${datetime.now(pytz.timezone(settings.TIME_ZONE)).year}. ${_("All rights reserved.")}</p>
+      <nav class="nav-peripheral" aria-label="${_("Policies")}">
+        <ol>
+          % if is_marketing_link_set('TOS'):
+          <li class="nav-item nav-peripheral-tos">
+            <a data-rel="edx.org" href="${marketing_link('TOS')}">${_("Terms of Service")}</a>
+          </li>
+          % endif
+          % if is_marketing_link_set('PRIVACY'):
+          <li class="nav-item nav-peripheral-pp">
+            <a data-rel="edx.org" href="${marketing_link('PRIVACY')}">${_("Privacy Policy")}</a>
+          </li>
+          % endif
+          % if waffle().is_enabled(ENABLE_ACCESSIBILITY_POLICY_PAGE):
+          <li class="nav-item nav-peripheral-aar">
+            <a data-rel="edx.org" href="${reverse('accessibility')}">${_("Accessibility Accommodation Request")}</a>
+          </li>
+          %endif
+          <li class="nav-item">
+            <a data-rel="edx.org" id="lms-link" href="${settings.LMS_ROOT_URL}">${_("LMS")}</a>
+          </li>
+        </ol>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>${_("Powered by")}</span>
+      <a class="logo-edly" href="https://edly.io/" target="_blank">
+        <img src="https://d1d3mtskh6y3sd.cloudfront.net/powered-by/logo-edly.svg" alt="edly">
+      </a>
+      <a class="logo-open-edx" href="https://open.edx.org/" target="_blank">
+        <img src="https://d1d3mtskh6y3sd.cloudfront.net/powered-by/logo-open-edx.svg" alt="open edX">
+      </a>
+    </div>
+  </footer>
+</div>

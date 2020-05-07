@@ -1,0 +1,14 @@
+// ------------------------------
+// THEME SASS FILES
+// ------------------------------
+// include variables for global settings
+@import 'partials/cms/theme/variables-v2';
+
+// base - utilities
+@import 'base/mixins';
+@import 'base/reset';
+
+// Components
+@import 'loader';
+@import 'shared-v2/header';
+@import 'shared-v2/footer';

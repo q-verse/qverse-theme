@@ -1,0 +1,95 @@
+// ===================================
+// lms - page banner
+// ===================================
+.page-hero-banner {
+    display: flex;
+    margin: 0 auto $baseline*1.25;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url('#{$path-to-s3-assets}/page-hero-banners/banner-account-settings.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+    min-height: $baseline*5;
+    overflow: hidden;
+    padding: $baseline*0.75;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    z-index: 1;
+    @include media-up(sm) {
+        min-height: $baseline*6.5;
+    }
+    @include media-up(lg) {
+        min-height: $baseline*10;
+    }
+
+    .page-banner-heading {
+        margin: 0;
+        color: $white;
+        font-size: 18px;
+        font-family: $heading-font;
+        font-weight: $font-medium;
+        text-align: center;
+        @include media-up(sm) {
+            font-size: 22px;
+        }
+        @include media-up(md) {
+            font-size: 26px;
+        }
+    }
+
+    &:before {
+        content: '';
+        background: rgba($black, 0.5);
+        position: absolute;
+        @include left(0);
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    &.profile-header-container {
+        margin-bottom: 0;
+        min-height: 125px;
+        background-image: url('#{$static-path}/images/banner-profile.jpg');
+
+        .profile-header {
+            display: none;
+            text-align: center;
+            padding: $baseline*2.5 $baseline*0.75;
+            @include media-up(sm) {
+                display: block;
+            }
+            @include media-up(md) {
+                padding-top: $baseline*4.15;
+                padding-bottom: $baseline*4.2;
+            }
+
+            .header,
+            .subheader {
+                color: $white;
+            }
+
+            .header {
+                display: block;
+                margin: 0;
+                font-weight: $font-medium;
+                font-size: 20px;
+                font-family: $heading-font;
+                text-align: center;
+                text-transform: uppercase;
+                @include media-up(sm) {
+                    font-size: 22px;
+                }
+                @include media-up(md) {
+                    font-size: 26px;
+                }
+            }
+        }
+    }
+
+    &.banner-account-settings {
+        background-image: url('#{$path-to-s3-assets}/page-hero-banners/banner-account-settings.jpg');
+    }
+}

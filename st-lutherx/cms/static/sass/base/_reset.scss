@@ -1,0 +1,21 @@
+// ====================
+// LMS - Base
+// ====================
+html,
+body {
+    overflow: auto;
+    height: 100%;
+    background: $body-bg;
+    -webkit-font-smoothing: unset;
+    -moz-osx-font-smoothing: unset;
+}
+
+.wrapper-content {
+    padding-bottom: $baseline * 3;
+}
+
+.wrapper-view {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}

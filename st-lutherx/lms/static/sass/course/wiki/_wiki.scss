@@ -1,0 +1,298 @@
+.wiki-wrapper {
+
+    section.wiki {
+        margin: 0 !important;
+
+        .pull-left {
+            @include float(left);
+        }
+
+        .pull-right {
+            @include float(right);
+        }
+
+        .breadcrumbs-header {
+            border-width: 0;
+            height: auto;
+            padding: $baseline*.7 $baseline*0.75 $baseline*0.6;
+            @include clearfix;
+
+
+            .breadcrumb {
+                margin: 0;
+
+                li {
+                    @include float(left);
+
+                    a {
+                        color: var(--primary);
+                        @include float(left);
+
+                        &:hover {
+                            color: var(--primary-darken-5p);
+                        }
+                    }
+
+                    &:after {
+                        @include margin-left($baseline*0.5);
+                        @include margin-right(0);
+                    }
+                }
+            }
+
+            .global-functions {
+                @include margin-right(0);
+                @include media-down(xs) {
+                    @include float(none);
+                }
+
+                .add-article-btn {
+                    @include margin-right(0);
+                    background: var(--primary);
+                    border-color: var(--primary);
+                    color: $white;
+                    box-shadow: none;
+                    font-weight: $font-medium;
+                    text-shadow: none;
+                    @include media-down(xs) {
+                        @include margin-left(0);
+                    }
+
+                    &:hover {
+                        background: var(--primary-darken-5p);
+                        border-color: var(--primary-darken-5p);
+                    }
+                }
+            }
+        }
+
+        .nav-tabs {
+
+            a {
+                color: var(--primary);
+            }
+        }
+
+        #alert_stat_bar {
+
+            // sass-lint:disable class-name-format
+            .paragon__alert {
+
+                .paragon__btn {
+
+                    &.paragon__close {
+                        background: $white;
+                        padding: $baseline*0.15 $baseline*0.5;
+                        @include right(14px);
+                        top: 3px;
+
+                        &:focus {
+                            box-shadow: none;
+                        }
+
+                        &:hover {
+                            border-color: $danger;
+                            color: $danger;
+                        }
+                    }
+                }
+            }
+            // sass-lint:enable class-name-format
+        }
+
+        .directory-toolbar {
+
+            &.form-search {
+
+                .pull-right {
+                    @include media-down(xs) {
+                        @include float(left);
+                        margin-top: $baseline*0.5;
+                    }
+                }
+            }
+        }
+
+        .main-article {
+            float: none;
+            padding: $baseline;
+            @include media-down(sm) {
+                width: auto;
+            }
+            @include media-up(sm) {
+                @include float(left);
+                @include padding(40px, 0, 40px, 40px);
+            }
+
+            .form-actions {
+                @include clearfix;
+
+                > * {
+                    height: 36px;
+                    @include media-down(xs) {
+                        margin-bottom: $baseline*0.5;
+                        @include margin-right($baseline*0.5);
+                        @include float(left);
+                    }
+                }
+            }
+        }
+
+        .article-functions {
+            float: none;
+            padding: $baseline;
+            @include media-down(sm) {
+                width: auto;
+            }
+            @include media-up(sm) {
+                @include float(left);
+            }
+
+            ul {
+
+                li {
+
+                    a {
+                        color: var(--primary);
+
+                        .icon {
+                            @include float(left);
+                            @include margin-right($baseline*0.5);
+                        }
+
+                        &:hover {
+                            color: var(--primary-darken-5p);
+                        }
+                    }
+
+                    &.active {
+
+                        a {
+                            @include border-left(4px solid);
+                            @include border-right(none);
+                            color: var(--primary);
+                        }
+                    }
+                }
+            }
+
+            .see-children {
+
+                a {
+                    color: var(--primary);
+
+                    &:hover {
+                        color: var(--primary-darken-5p);
+                    }
+                }
+            }
+        }
+
+        .entry-title {
+            font-weight: $font-medium !important;
+        }
+
+        .lead {
+            line-height: normal;
+        }
+
+        .page-header {
+            background: $gray-lightest;
+            font-weight: $font-medium;
+        }
+
+        #hint_id_content {
+            top: -5px;
+            @include right(0%);
+            @include left(auto);
+            @include media-down(xs) {
+                @include text-align(left);
+                margin-bottom: $baseline*0.25;
+            }
+            @include media-down(sm) {
+                position: relative;
+            }
+        }
+
+        form {
+
+            .control-group {
+                border-bottom: 1px solid $gray-lightest;
+                padding-bottom: $baseline*0.75;
+                @include media-up(sm) {
+                    padding-bottom: $baseline;
+                }
+
+                .control-label {
+                    font-size: 14px;
+                    font-weight: $font-medium;
+                    @include media-up(sm) {
+                        font-size: 16px;
+                    }
+                }
+
+                .controls {
+
+                    .help-block {
+                        color: $gray-light;
+                        font-size: 14px;
+                        margin-top: $baseline*0.5;
+                    }
+
+                    // sass-lint:disable class-name-format
+                    .CodeMirror-scroll {
+                        margin: 0;
+                    }
+                    // sass-lint:enable class-name-format
+                }
+
+                &#div_id_confirm {
+                    height: $baseline*2.5;
+                }
+            }
+        }
+
+        section {
+
+            &.delete {
+                padding: $baseline;
+                @include media-up(md) {
+                    padding: $baseline*2;
+                }
+            }
+        }
+
+        .btn {
+            box-shadow: none !important;
+            font-weight: $font-medium !important;
+
+            &.btn-primary {
+                background: var(--primary);
+                border-color: var(--primary);
+
+                &:hover {
+                    background: var(--primary-darken-5p);
+                    border-color: var(--primary-darken-5p);
+                }
+            }
+
+            &.btn-danger {
+                @include button(simple, $danger);
+            }
+        }
+    }
+
+    #mergeButton {
+        display: none !important;
+    }
+
+    .modal {
+        @include media-down(sm) {
+            margin: 0 auto !important;
+            max-width: calc(100% - 30px);
+            top: 50px !important;
+            @include left(15px !important);
+            @include right(15px !important);
+        }
+    }
+}

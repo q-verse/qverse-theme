@@ -1,0 +1,56 @@
+// lms - Form elements
+// ====================================
+
+// * +Input fields
+// * +Select dropdowns
+input,
+textarea,
+select {
+    background: $white;
+    max-width: 100%;
+
+    &:focus {
+        border-color: var(--primary);
+        outline: none;
+    }
+}
+
+button {
+    overflow: hidden !important;
+
+    &.search-button {
+        min-width: 70px;
+    }
+
+    &:focus {
+        outline-color: $outline-color;
+    }
+}
+
+.action-primary {
+    text-shadow: none;
+
+    &:focus {
+        box-shadow: none !important;
+        outline-color: $outline-color;
+    }
+}
+
+.btn-link {
+    color: var(--primary) !important;
+
+    &:hover {
+        border-color: transparent !important;
+    }
+}
+
+.forum-search {
+
+    .search-input {
+
+        &:focus {
+            border-color: var(--primary);
+            box-shadow: none;
+        }
+    }
+}

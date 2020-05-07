@@ -1,0 +1,184 @@
+// Sets the logo background and scales it to a given height.
+@mixin brand-logo($width, $height, $scaled-height: '') {
+    display: inline-block;
+
+    @if $scaled-height != '' {
+        $scale: $scaled-height / $height;
+        $width: $width * $scale;
+        $height: $scaled-height;
+    }
+    width: $width;
+    height: $height;
+    margin-right: 10px;
+}
+
+// Vertically center an element
+@mixin center-vertically {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    vertical-align: middle;
+}
+
+// List
+@mixin list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+// Truncate overflow text with ellipses in multi-line format
+// sass-lint:disable variable-name-format
+@mixin multiline-ellipsis($lineHeight: 1.2em, $lineCount: 1) {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    line-height: $lineHeight;
+    max-height: $lineHeight * $lineCount;
+    margin-right: -1em;
+    padding-right: 1em;
+
+    &:before {
+        content: '...';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 1em;
+        height: 1em;
+        margin-top: 0.2em;
+        background: #FFF;
+    }
+}
+// sass-lint:enable variable-name-format
+
+// clearfix
+@mixin clearfix {
+
+    &:before,
+    &:after {
+        display: table;
+        content: '';
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+//
+//  MEDIA QUERIES
+//------------------------------------------------------------------
+$breakpoints: (
+    xxs:    320px,  // Tiny devices (mobile)
+    xs:     576px,  // Small tablets and large smartphones (landscape view)
+    sm:     768px,  // Tablets (portrait view)
+    md:     992px,  // Tablets and small desktops
+    lg:     1025px, // Tablets landscape and desktops
+    xl:     1200px, // Desktops
+    xxl:    1300px  // Desktops
+);
+
+//
+//  RESPOND UP
+//------------------------------------------------------------------
+// @include media-up(sm) {...}
+@mixin media-up($breakpoint) {
+
+    // If the breakpoint exists in the map.
+    @if map-has-key($breakpoints, $breakpoint) {
+
+        // Get the breakpoint value.
+        $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+        // Write the media query.
+        @media (min-width: $breakpoint-value) {
+            @content;
+        }
+
+        // If the breakpoint doesn't exist in the map.
+    } @else {
+
+        // Log a warning.
+        @warn 'Invalid breakpoint: #{$breakpoint}.';
+    }
+}
+
+//
+//  RESPOND DOWN
+//------------------------------------------------------------------
+// @include media-down(sm) {...}
+@mixin media-down($breakpoint) {
+
+    // If the breakpoint exists in the map.
+    @if map-has-key($breakpoints, $breakpoint) {
+
+        // Get the breakpoint value.
+        $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+        // Write the media query.
+        @media (max-width: ($breakpoint-value - 1)) {
+            @content;
+        }
+
+        // If the breakpoint doesn't exist in the map.
+    } @else {
+
+        // Log a warning.
+        @warn 'Invalid breakpoint: #{$breakpoint}.';
+    }
+}
+
+//
+//  RESPOND BETWEEN
+//------------------------------------------------------------------
+// @include media-between(sm, md) {}
+@mixin media-between($lower, $upper) {
+
+    // If both the lower and upper breakpoints exist in the map.
+    @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
+
+        // Get the lower and upper breakpoints.
+        $lower-breakpoint: map-get($breakpoints, $lower);
+        $upper-breakpoint: map-get($breakpoints, $upper);
+
+        // Write the media query.
+        @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+            @content;
+        }
+
+        // If one or both of the breakpoints don't exist.
+    } @else {
+
+        // If lower breakpoint is invalid.
+        @if (map-has-key($breakpoints, $lower) == false) {
+
+            // Log a warning.
+            @warn 'Your lower breakpoint was invalid: #{$lower}.';
+        }
+
+        // If upper breakpoint is invalid.
+        @if (map-has-key($breakpoints, $upper) == false) {
+
+            // Log a warning.
+            @warn 'Your upper breakpoint was invalid: #{$upper}.';
+        }
+    }
+}
+
+//
+//  ROOT PROPS
+//------------------------------------------------------------------
+// @include root-prop(--root-prop, #000000);
+@mixin root-prop($prop: null, $value: null) {
+    @if ($prop and $value) {
+        #{$prop}: $value;
+    }
+}

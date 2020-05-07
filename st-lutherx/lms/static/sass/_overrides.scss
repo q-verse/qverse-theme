@@ -1,0 +1,133 @@
+// ------------------------------
+// About: Additional sass rules that must come at the end of the compilation for overriding purposes - either for temporary/specific developer styling needs or for known poorly scoped/written styling
+//
+
+// #TEMP
+// #DEVELOPERS
+// #SHAME
+
+// ------------------------------
+// #TEMP
+// ------------------------------
+.course-info {
+
+    .details {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        span,
+        a {
+            font-family: $font-family-sans-serif;
+        }
+    }
+}
+
+[class^='wrapper'] {
+
+    .view-dashboard & {
+        width: auto;
+    }
+
+    &:after {
+        .view-dashboard & {
+            content: none;
+        }
+    }
+}
+
+.dashboard {
+
+    .side-container {
+        min-width: 500px;
+        max-width: 500px;
+
+        .sidebar-notification {
+
+            .profile-sidebar {
+
+                .user-info {
+
+                    .status-note {
+
+                        strong {
+                            word-break:  break-all;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.alert-main {
+    width: 100%;
+    font-size: 15px;
+    line-height: 22px;
+    padding: 10px 20px;
+    text-align: center;
+
+    &:not(.pattern-library-shim) {
+        max-width: none;
+        min-width: 0;
+        box-shadow: none;
+    }
+
+    &.alert-warning {
+        background: $orange-color;
+        color: $white;
+        border-color: $orange-color;
+    }
+}
+
+.wrapper-preview-menu {
+    background-color: var(--primary) !important;
+}
+
+.date-summary-container {
+
+    .date-summary-todays-date {
+        border-color: var(--primary) !important;
+    }
+
+    .date-summary {
+
+        .date-summary-link {
+
+            a {
+                color: var(--primary) !important;
+
+                &:hover {
+                    color: var(--primary-darken-5p) !important;
+                }
+            }
+        }
+    }
+}
+
+// sass-lint:disable force-pseudo-nesting
+a:not(.btn),
+a:visited:not(.btn),
+p a:not(.btn),
+p a:visited:not(.btn) {
+    color: var(--primary);
+
+    &:hover,
+    &:focus {
+        color: var(--primary-darken-5p);
+    }
+}
+// sass-lint:enable force-pseudo-nesting
+
+// ------------------------------
+// #DEVELOPERS
+// ------------------------------
+
+
+// ------------------------------
+// #SHAME
+// ------------------------------

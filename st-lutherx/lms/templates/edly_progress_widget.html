@@ -1,0 +1,55 @@
+## mako
+
+<%page expression_filter="h"/>
+
+<%namespace name='static' file='static_content.html'/>
+
+<%!
+  from django.utils.translation import ugettext as _
+%>
+
+<div class="edly-progress-widget-container">
+    % if course:
+    <div id="edly-progress-widget-feedback" data-ajax-url="/api/edly_panel/v1/course_progress/" data-course-id=${course.id} ></div>
+    % else:
+    <div id="edly-progress-widget-feedback" data-ajax-url="/api/edly_panel/v1/course_progress/" ></div>
+    % endif
+    <button id="btn-close-progress-widget">
+        <div id="overall_progressBtn"></div>
+    </button>
+    <div id="edly-progress-widget">
+        <h4 class="widghet-heading">${_("TOTAL COURSE PROGRESS")}</h4>
+        <div id="overall_progress"></div>
+        <div class="progress-container">
+            <p>
+                ${_("Problems")}
+                <span id="problem_progress_figures"></span>
+            </p>
+            <div id="problem_progress" class="progress"></div>
+        </div>
+        <div class="progress-container">
+            <p>
+                ${_("Videos")}
+                <span id="videos_progress_figures"></span>
+            </p>
+            <div id="video_progress" class="progress"></div>
+        </div>
+        <div class="progress-container">
+            <p>
+                ${_("Readings")}
+                <span id="html_progress_figures"></span>
+            </p>
+            <div id="html_progress" class="progress"></div>
+        </div>
+        <div class="progress-container">
+            <p>
+                ${_("Others")}
+                <span id="other_progress_figures"></span>
+            </p>
+            <div id="other_progress" class="progress"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="${static.url('js/progressbar.min.js')}"></script>
+<script type="text/javascript" src="${static.url('js/edly-progress-widget.js')}"></script>

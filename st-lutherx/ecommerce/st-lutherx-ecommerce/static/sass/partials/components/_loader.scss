@@ -1,0 +1,64 @@
+.loading {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+    min-height: 30px;
+
+    .wrapper-footer & {
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $gray-dark;
+        z-index: 1;
+    }
+}
+
+.loading-dots {
+    display: flex;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    li {
+        display: inline-block;
+        margin: 3px;
+        width: 10px;
+        height: 10px;
+        padding: 0;
+        animation: loading-bouncedelay 1.4s infinite ease-in-out both;
+        border-radius: 50%;
+        background-color: var(--primary);
+
+        &:first-child {
+            animation-delay: -0.32s;
+        }
+
+        &:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+    }
+}
+
+@keyframes loading-bouncedelay {
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+}

@@ -1,0 +1,48 @@
+{% load i18n %}
+{% load static %}
+
+<header class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button id="hamburger-button" class="hamburger-menu collapsed" data-toggle="collapse"
+              data-target="#main-navbar-collapse" type="button" aria-expanded="false">
+        <span aria-hidden="true" class="icon-bar"></span>
+        <span aria-hidden="true" class="icon-bar"></span>
+        <span aria-hidden="true" class="icon-bar"></span>
+        <span aria-hidden="true" class="icon-bar"></span>
+        <span class="sr-only">{% trans "Toggle navigation" %}</span>
+      </button>
+      {% block navbar_brand %}{% endblock navbar_brand %}
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenticated %}
+          <li>
+            <a href="{{ lms_dashboard_url }}" class="nav-link">Home <span class="sr-only">{% trans "Dashboard for:" %} {{ user.username }}</span></a>
+          </li>
+          <li>
+            <button class="dropdown-toggle hidden-xs nav-link"
+                data-toggle="dropdown"
+                aria-haspopup="true">
+              {{ user.username }}
+              <span class="fa fa-caret-down" aria-hidden="true"></span>
+              <span class="sr-only">{% trans "Toggle Dropdown" %}</span>
+            </button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              {% block dropdown_menu %}{% endblock dropdown_menu %}
+            </ul>
+          </li>
+          <li class="user-menu">
+              {% block small_dropdown_menu %}{% endblock small_dropdown_menu %}
+          </li>
+        {% else %}
+          <a class="btn btn-primary navbar-btn hidden-xs" href="{% url 'login' %}">{% trans "Login" %}</a>
+          <li class="visible-xs"><a class="nav-link" href="{% url 'login' %}">{% trans "Login" %}</a></li>
+          </a>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</header>

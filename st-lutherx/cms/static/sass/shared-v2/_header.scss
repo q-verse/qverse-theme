@@ -1,0 +1,276 @@
+// ====================
+// Open edX: CMS Header
+// ====================
+
+.wrapper-header {
+    padding: 15px 20px;
+
+    .branding {
+        padding: 0;
+
+        a {
+
+            img {
+                display: inline-block;
+                vertical-align: top;
+                max-height: 70px;
+                max-width: 200px;
+                width: auto;
+                height: auto;
+            }
+        }
+    }
+
+    .nav-account {
+        padding: 0;
+        top: 0;
+    }
+
+    nav {
+
+        > ol {
+
+            > .nav-item {
+                @include margin-left(4px);
+            }
+        }
+
+        .nav-item {
+
+            a {
+                color: $gray-dark;
+
+                &:hover,
+                &:focus {
+                    color: var(--primary);
+                }
+            }
+        }
+    }
+
+    .nav-pitch {
+        @include padding(9px, 10px, 0, 0);
+
+        .not-signedin & {
+
+            .nav-item {
+                text-transform: uppercase;
+                font-weight: 400;
+                @include margin-left(20px);
+                @include margin-right(0);
+
+                a {
+                    padding: 10px 10px 9px;
+                    box-shadow: none;
+                    background: none;
+                    border: 0;
+                    font-weight: 400;
+                }
+            }
+
+            .action-signin {
+                color: $gray-dark;
+
+                &:hover,
+                &:focus {
+                    color: var(--primary-darken-5p);
+                    background: none;
+                    box-shadow: none;
+                }
+            }
+
+            .nav-not-signedin-signup {
+                float: right;
+                @include margin-left(25px);
+
+                a {
+                    background: var(--primary);
+                    padding: 10px 20px;
+                    min-width: 62px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .nav-dd {
+
+        .title {
+            text-transform: uppercase;
+            font-weight: normal;
+            border-color: transparent;
+            font-size: $baseline * .7;
+            line-height: 21px;
+            color: $gray-dark;
+            padding: 5px 7px;
+
+            &:hover {
+                border-color: transparent;
+                color: var(--primary-darken-5p);
+            }
+
+            &.is-selected {
+                box-shadow: none;
+                border-color: transparent;
+
+                .ui-toggle-dd {
+                    @include transform(rotate(0deg));
+                }
+            }
+
+            .fa-caret-down {
+                opacity: 1;
+                @include padding(1px, 0, 0, 6px);
+            }
+        }
+
+        &.ui-right {
+
+            .wrapper-nav-sub {
+                @include right(8px);
+                top: 100%;
+                margin-top: 2px;
+                min-width: 200px;
+            }
+        }
+
+        .nav-sub {
+            border: 0;
+            padding: 0;
+            box-shadow: $dropdown-shadow;
+
+            .nav-item {
+                margin: 0;
+                padding: 0;
+
+                a {
+                    padding: 10px 15px;
+
+                    &:hover,
+                    &:active {
+                        color: $gray-dark2;
+                        background: $gray-lightest;
+                    }
+                }
+            }
+
+            &:after,
+            &:before {
+                display: none;
+            }
+        }
+    }
+
+    header {
+
+        &.primary {
+            display: flex;
+            max-width: none;
+            align-items: center;
+
+            .wrapper-l {
+                width: auto;
+            }
+
+            .wrapper-r {
+                width: auto;
+                @include margin-right(-8px);
+                @include margin-left(auto);
+            }
+        }
+    }
+}
+
+.alert {
+    display: flex;
+    padding: $baseline;
+    border: 1px solid;
+    font-size: 14px;
+
+    .suitewise-notifications-wrapper & {
+        margin: 0;
+        max-width: none;
+        border: 0;
+        border-bottom: 1px solid;
+        border-radius: 0;
+    }
+
+    .alert-link {
+        @include margin-left(auto);
+        font-size: 13px;
+        color: $warning-color !important;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        .fa {
+            font-size: 15px;
+        }
+    }
+
+    .icon-alert {
+        @include margin-right($baseline);
+    }
+
+    .message-actions {
+        @include margin-left($baseline);
+    }
+
+    &.alert-info {
+        color: $state-info-text;
+        background-color: $state-info-bg;
+        border-color: $state-info-border;
+        box-shadow: none;
+        line-height: initial;
+
+        .suitewise-notifications-wrapper & {
+            color: $text-color;
+        }
+
+        a,
+        .btn-link {
+            color: $state-info-text-link;
+            font-weight: bold;
+            border-color: transparent;
+
+            .suitewise-notifications-wrapper & {
+                color: $text-color;
+                font-weight: normal;
+            }
+        }
+    }
+
+    &.alert-success {
+        color: $state-success-text;
+        background-color: $state-success-bg;
+        border-color: $state-success-border;
+        box-shadow: none;
+
+        .suitewise-notifications-wrapper & {
+            color: $text-color;
+        }
+    }
+
+    &.alert-warning {
+        color: $state-warning-text;
+        background-color: $state-warning-bg;
+        border-color: $state-warning-border;
+        box-shadow: none;
+
+        .suitewise-notifications-wrapper & {
+            color: $text-color;
+        }
+   }
+
+    &.alert-danger {
+        color: $state-danger-text;
+        background-color: $state-danger-bg;
+        border-color: $state-danger-border;
+        box-shadow: none;
+
+        .suitewise-notifications-wrapper & {
+            color: $text-color;
+        }
+    }
+}

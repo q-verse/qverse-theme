@@ -1,0 +1,16 @@
+// ====================
+// Courseware Header
+// ====================
+.content-wrapper {
+
+    .course-tabs {
+
+        .navbar-nav {
+            @include margin-left(0);
+
+            .nav-item {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

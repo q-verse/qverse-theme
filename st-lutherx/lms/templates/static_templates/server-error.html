@@ -1,0 +1,29 @@
+<%page expression_filter="h"/>
+<%namespace name='static' file='../static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+from openedx.core.djangolib.markup import HTML, Text
+%>
+<%inherit file="../main.html" />
+<%block name="bodyclass">error-page</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+
+    <section class="error-block">
+        <strong class="error-page-title"><img src="https://edly-edx-theme-files.s3.amazonaws.com/error-page-assets/error-500.svg" alt="Error 500"></strong>
+        <h1>
+            <%block name="pageheader">${page_header or _("Internal Server Error!")}</%block>
+        </h1>
+        <p>
+            <%block name="pagecontent">
+                % if page_content:
+                    ${page_content}
+                % else:
+                    ${Text(_('There seems to be a small problem with our servers. We apologize for the inconvenience.{line_break}Please refresh this page after a few seconds.')).format(
+                    line_break=HTML('<br/>'),
+                    )}
+                % endif
+            </%block>
+        </p>
+    </section>
+</main>

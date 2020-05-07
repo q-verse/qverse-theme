@@ -1,0 +1,107 @@
+{# Base template for edX-specific pages. #}
+
+{% load compress %}
+{% load core_extras %}
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang={{ LANGUAGE_CODE }}>
+<head>
+    <link rel="icon" type="image/x-icon" href="{{edly_branding_config.favicon}}"/>
+    <link rel="apple-touch-icon" href="{% static 'images/touch-icon.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'images/touch-icon-2x.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/touch-icon-3x.png' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+
+    {% compress css %}
+        {% if main_css %}
+            <link rel="stylesheet" href="{{ main_css }}" type="text/x-scss">
+        {% else %}
+            <link rel="stylesheet" href="{% static 'css/base/main.css' %}" type="text/x-scss">
+        {% endif %}
+    {% endcompress %}
+
+    {% compress css %}
+        {# This block is separated to better support browser caching. #}
+        {% block stylesheets %}
+        {% endblock %}
+    {% endcompress %}
+
+    <!-- Fonts -->
+    {% if edly_fonts_config.font_path %}
+        <link href="{{edly_fonts_config.font_path}}" rel="stylesheet" />
+    {% endif %}
+
+    <!-- CSS color variables -->
+    {% if edly_colors_config %}
+        <style>
+            :root {
+                {% for key, value in edly_colors_config.items %}
+                    --{{key}}: {{value}};
+                {% endfor %}
+
+                {% for key, value in edly_fonts_config.items %}
+                    --{{key}}: {{value | safe }};
+                {% endfor %}
+            }
+        </style>
+    {% endif %}
+
+</head>
+<body data-wordpress-base-url="{{settings.EDLY_WORDPRESS_URL}}"
+      data-services-notifications-url = "{{services_notifications_url}}"
+      data-session-cookie-domain = "{{session_cookie_domain}}"
+      data-services-notifications-cookie-expiry = "{{services_notifications_cookie_expiry}}"
+>
+{% block skip_link %}
+{% endblock skip_link %}
+
+{% block navbar %}
+    {% include 'edx/partials/_staff_navbar.html' %}
+{% endblock navbar %}
+<div id="services_notifications" class="suitewise-notifications-wrapper"></div>
+{% block info_message %}
+    {% include 'edx/partials/_info_message.html' %}
+{% endblock info_message %}
+
+{% block content %}
+{% endblock content %}
+
+{% include 'edx/footer.html' %}
+
+{# Translation support for JavaScript strings. #}
+<script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+
+<script type="text/javascript">
+    var initModelData = {{ analytics_data|safe }};
+</script>
+
+{% compress js %}
+    <script src="{% static 'bower_components/requirejs/require.js' %}"></script>
+    <script src="{% static 'js/config.js' %}"></script>
+
+     Note: django-compressor does not recognize the data-main attribute. Load the main script separately.
+    <script src="{% static 'js/common.js' %}"></script>
+{% endcompress %}
+
+{% if optimizely_snippet_src %}
+  <script src="{{ optimizely_snippet_src }}"></script>
+{% endif %}
+
+{% compress js %}
+    {# Note: This block is purposely separated from the one above so that browsers cache the common JS instead of
+    downloading a single, large file for each page. #}
+    {% block javascript %}
+    {% endblock javascript %}
+{% endcompress %}
+
+{% block post_js %}
+{% endblock %}
+
+<script src="{% static 'js/common-scripts.js' %}"></script>
+
+</body>
+</html>

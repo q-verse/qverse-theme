@@ -1,0 +1,146 @@
+.edly-progress-widget-container {
+
+    $widget-width: 300px;
+
+    width: $widget-width;
+    background: $color-gray-smoke;
+    @include transition(all 0.4s ease);
+    padding: 20px;
+    position: fixed;
+    z-index: 99;
+    @include right(-($widget-width));
+    @include media-down(sm) {
+        display: none !important;
+    }
+    @include media-up(sm) {
+        top: 118px;
+    }
+    @include media-up(md) {
+        top: 135px;
+    }
+
+    &.show {
+        @include right(0);
+        @include box-shadow(0, 4px, 8px, rgba(0, 0, 0, 0.2));
+    }
+
+    #btn-close-progress-widget {
+
+        $button-size-lg: 100px;
+        $button-size-md: 50px;
+        $button-size-sm: 44px;
+
+        @include transition(all 0.4s ease);
+        background: $color-gray-smoke;
+        box-shadow: -1px 1px 6px 0 rgba(0, 0, 0, 0.2);
+        border-width: 0;
+        border-radius: 0;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        font-size: 30px;
+        font-weight: normal;
+        padding: 0;
+        overflow: visible !important;
+        @include media-up(sm) {
+            width: $button-size-md;
+            height: $button-size-md;
+            @include left(-($button-size-md));
+        }
+        @include media-up(md) {
+            width: $button-size-lg;
+            height: $button-size-lg;
+            @include left(-($button-size-lg));
+        }
+
+        .progressbar-text {
+            @include media-between(sm, md) {
+                font-size: 11px !important;
+            }
+        }
+
+        &:after {
+            content: '';
+            width: 10px;
+            height: $button-size-lg + 10px;
+            background: $color-gray-smoke;
+            position: absolute;
+            z-index: 11111;
+            right: -10px;
+            top: 0;
+        }
+
+        &:hover {
+            background: darken($color-gray-smoke, 3%);
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        #overall_progressBtn {
+            padding: 4px;
+            @include media-up(md) {
+                padding: 10px;
+            }
+        }
+
+        &.show-close-icon {
+            width: $button-size-sm;
+            height: $button-size-sm;
+            @include left(-($button-size-sm));
+
+            #overall_progressBtn {
+                display: none;
+            }
+
+            &:before {
+                content: '\00D7';
+                font-size: 32px;
+                line-height: normal;
+            }
+        }
+    }
+
+    #edly-progress-widget {
+
+        .widghet-heading {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #overall_progress {
+            height: 200px;
+
+            .progressbar-text {
+                font-size: 28px !important;
+            }
+        }
+
+        .progress-container {
+            @include margin(15px, 0, 0, 0);
+
+            p,
+            .progress {
+                margin: 0 0 3px !important;
+                width: 100%;
+            }
+
+            p {
+                font-size: 14px;
+                margin-bottom: 2px;
+
+                > span {
+                    @include float(right);
+                    color: $gray;
+                }
+            }
+
+            .progress {
+                height: 18px;
+            }
+        }
+    }
+}

@@ -1,0 +1,136 @@
+.instructor-dashboard-wrapper-2 {
+
+    .instructor-dashboard-content-2 {
+
+        .instructor-nav {
+            border-bottom: 2px solid $gray-lightest;
+
+            .nav-item {
+                margin-bottom: -2px;
+
+                .btn-link {
+                    color: $gray-mid !important;
+                    font-weight: normal;
+                    border-bottom: 2px solid transparent;
+
+                    &:hover {
+                        color: var(--primary);
+                        border-color: transparent;
+                        text-decoration: none !important;
+                    }
+
+                    &:focus {
+                        outline: none;
+                        text-decoration: none !important;
+                    }
+
+                    &.active-section {
+                        border-width: 2px;
+                        border-color: var(--primary);
+                        color: var(--primary) !important;
+                        pointer-events: none;
+                    }
+                }
+            }
+        }
+
+        .idash-section {
+
+            h3 {
+                margin-bottom: $baseline;
+            }
+
+            select {
+                @include media-up(sm) {
+                    min-width: 200px;
+                    height: 34px;
+                }
+            }
+
+            input {
+
+                &[type='button'] {
+                    background: $white;
+                    border-color: var(--primary);
+                    color: var(--primary);
+                    box-shadow: none;
+                    text-shadow: none;
+
+                    &:hover {
+                        background: var(--primary);
+                        border-color: var(--primary);
+                        color: $white;
+                    }
+
+                    &:active,
+                    &:focus {
+                        outline: none;
+                        box-shadow: none !important;
+                    }
+                }
+            }
+
+            &#course_info {
+
+                .enrollment-wrapper {
+
+                    table {
+                        @include media-up(sm) {
+                            min-width: 400px;
+                        }
+
+                        caption {
+                            border-bottom: 1px solid $gray-light;
+                            padding: $baseline*0.5 0;
+                            @include text-align(left);
+                        }
+
+                        tr {
+
+                            th,
+                            td {
+                                padding: $baseline*0.5 0;
+                            }
+
+                            th {
+                                font-weight: $font-medium;
+                            }
+
+                            &:last-child {
+                                border-top: 1px solid $gray-mid !important;
+                                border-bottom: 1px solid $gray-mid !important;
+                            }
+                        }
+                    }
+                }
+
+                .basic-wrapper {
+
+                    .list-input {
+
+                        li {
+
+                            label {
+                                display: inline-block;
+                                @include media-up(sm) {
+                                    min-width: 200px;
+                                }
+                            }
+
+                            b {
+                                font-weight: $font-medium;
+                            }
+                        }
+                    }
+                }
+            }
+
+            fieldset {
+
+                label {
+                    color: $text-color;
+                }
+            }
+        }
+    }
+}

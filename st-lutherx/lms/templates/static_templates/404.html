@@ -1,0 +1,34 @@
+<%page expression_filter="h"/>
+<%namespace name='static' file='../static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+from openedx.core.djangolib.markup import HTML, Text
+%>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Page Not Found")}</%block>
+<%block name="bodyclass">error-page</%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+
+    <section class="error-block">
+        <strong class="error-page-title"><img src="https://edly-edx-theme-files.s3.amazonaws.com/error-page-assets/error-404.svg" alt="Error 404"></strong>
+        <h1>
+            <%block name="pageheader">${page_header or _("Page not found!")}</%block>
+        </h1>
+        <p>
+            <%block name="pagecontent">
+                % if page_content:
+                    ${page_content}
+                % else:
+                    ${Text(_('The page you are looking for may have been moved or renamed. {line_break}If you continue to have issues, please visit our  {link_start}FAQ{link_end} page or contact {support_link_start}Support{link_end}.')).format(
+                    link_start=HTML('<a href="{}">').format(marketing_link('FAQ')),
+                    support_link_start=HTML('<a href="{}">').format(marketing_link('CONTACT')),
+                    link_end=HTML('</a>'),
+                    line_break=HTML('<br/>'),
+                    )}
+                % endif
+            </%block>
+        </p>
+    </section>
+</main>

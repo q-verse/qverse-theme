@@ -1,0 +1,17 @@
+version: 2
+
+jobs:
+
+  build:
+
+    working_directory: ~/edly-edx-themes
+
+    docker:
+
+      - image: circleci/node:latest
+
+    steps:
+
+      - checkout
+      - run: make test-requirements
+      - run: make test-quality

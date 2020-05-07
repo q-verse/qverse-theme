@@ -1,0 +1,99 @@
+//
+// Theme colors
+//
+// Note: define colors needed by your theme first
+
+// Define your theme's base color
+$sky-blue:              #3E99D4;
+
+// Make your theme's base color as primary color
+$primary:               $sky-blue;
+$primary-dark:          darken($primary, 10%);
+
+// Overrides variables
+$body-bg:               transparent;
+$black:                 #000;
+$text-color:            #121212;
+
+// These variable names are being used in some buttons, so just replace the value not variable name.
+$uxpl-blue-hover-active: $primary; // i-e dashboard links
+$m-blue-d1:             $primary;
+$m-blue-d3:             $primary;
+$m-blue-d5:             $primary;
+$m-blue-d6:             $primary-dark;
+$m-blue-l1:             $primary-dark;
+$blue:                  $primary;
+$link-color:            $primary;
+
+// Font family
+$font-family-serif:      var(--base-font, sans-serif);
+$font-family-sans-serif: var(--base-font, sans-serif);
+$font-medium:            500;
+
+// Initialize the Open edX Bootstrap theme
+@import 'edx-bootstrap/sass/open-edx/theme';
+
+// ------------------------------
+// THEME's variables
+// ------------------------------
+$secondary:             var(--secondary);
+
+$gray-darker:           #2D3235;
+$gray-dark:             #333A3F;
+$gray-mid:              #454545;
+$gray-mid-border:       #E4E4E4;
+$gray:                  #757575;
+$gray-light:            #999;
+$gray-lighter:          #CCC;
+$gray-lightest:         #F2F2F2;
+$blue-dark:             #126F9A;
+$orange-color:          #FF9800;
+
+$color-gray-smoke:      #F3F4F6;
+$color-gray-light:      #A3A3A3;
+
+$warning-color:         #DC3545;
+$success-color:         #28A745;
+
+// Social media
+$facebook-color:        #3B5998;
+$twitter-color:         #00ACED;
+$linkedin-color:        #007BB5;
+$instagram-color:       #517FA4;
+$dribbble-color:        #EA4C89;
+$pinterest-color:       #CB2027;
+$google-plus-color:     #DD4B39;
+$youtube-color:         #B00;
+
+// Fonts
+$heading-font:          var(--heading-font, sans-serif);
+
+// Misc.
+$path-to-s3-assets:     'https://edly-edx-theme-files.s3.amazonaws.com';
+$border-radius:         3px;
+$container-default:     1170px;
+$outline-color:         var(--primary);
+
+// ----------------------------
+// System notification alert colors
+// ----------------------------
+$state-success:         #28A745;
+$state-success-text:    $text-color;
+$state-success-bg:      rgba($state-success, .05);
+$state-success-border:  lighten($state-success, 15%);
+
+$state-info:            #0079B8;
+$state-info-text:       $text-color;
+$state-info-text-link:  $text-color;
+$state-info-bg:         rgba($state-info, .05);
+$state-info-border:     rgba($state-info, .5);
+
+$state-warning:         #FFE15E;
+$state-warning-text:    $text-color;
+$state-warning-bg:      rgba($state-warning, .2);
+$state-warning-border:  $state-warning;
+
+$state-danger:          #F66E7E;
+$state-danger-text:     $text-color;
+$state-danger-bg:       rgba($state-danger, .05);
+$state-danger-border:   lighten($state-danger, 15%);

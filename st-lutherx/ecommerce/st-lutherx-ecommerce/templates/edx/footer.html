@@ -1,0 +1,70 @@
+{% load i18n %}
+
+<div class="wrapper wrapper-footer">
+
+  {% if settings.EDLY_WORDPRESS_URL %}
+  <div class="loading">
+    <ul class="loading-dots">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  {% endif %}
+
+  <footer>
+    <div class="container">
+      <div class="colophon">
+        <div class="company-info">
+          <p class="info">
+            <a href="https://dev.edly.io/">
+              <img alt='{% trans "organization logo placeholder"%}' src="https://demo-wordpress-storage.s3.amazonaws.com/uploads/2019/03/st-lutherx-logo-white-300x60.png" width="200" />
+            </a>
+          </p>
+          <p class="info">{% trans "St. LutherX is an initiative of St. Luther University, Inc., a tax-exempt 501(c)(3) nonprofit organization based in McKinney, Texas."%}</p>
+        </div>
+        <div class="wcag-logo">
+          <img height="32" width="88" src="https://www.w3.org/WAI/wcag2AA-blue-v.svg" alt='{% trans "Level Double-A conformance, W3C WAI Web Content Accessibility Guidelines 2.0"%}'>
+        </div>
+      </div>
+      <div class="copyright-area">
+        {% now "Y" as current_year %}
+        <p class="copyright">{% blocktrans %} &copy; Edly {{ current_year }}. All rights reserved.{% endblocktrans %}</p>
+        <nav class="nav-legal" aria-label="{% trans 'Legal'%}">
+          <ul class="menu-privacy">
+            <li class="nav-legal-01">
+              {% if settings.MARKETING_SITE_ROOT and settings.MKTG_URLS.TOS %}
+                <a href="{{ settings.MARKETING_SITE_ROOT|add:settings.MKTG_URLS.TOS }}" target="_blank">{% trans "Terms of Service" %}</a>
+              {% else %}
+                <a href="#" target="_blank">{% trans "Terms of Service" %}</a>
+              {% endif %}
+            </li>
+            <li class="nav-legal-02">
+              {% if settings.MARKETING_SITE_ROOT and settings.MKTG_URLS.HONOR %}
+                <a href="{{ settings.MARKETING_SITE_ROOT|add:settings.MKTG_URLS.HONOR }}">{% trans "Honor Code"%}</a>
+              {% else %}
+                <a href="#">{% trans "Honor Code"%}</a>
+              {% endif %}
+            </li>
+            <li class="nav-legal-03">
+              {% if settings.MARKETING_SITE_ROOT and settings.MKTG_URLS.PRIVACY %}
+                <a href="{{ settings.MARKETING_SITE_ROOT|add:settings.MKTG_URLS.PRIVACY }}" target="_blank">{% trans "Privacy Policy"%}</a>
+              {% else %}
+                <a href="#" target="_blank">{% trans "Privacy Policy"%}</a>
+              {% endif %}
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>{% trans "Powered by"%}</span>
+      <a class="logo-edly" href="https://edly.io/" target="_blank">
+        <img src="https://d1d3mtskh6y3sd.cloudfront.net/powered-by/logo-edly.svg" alt="edly">
+      </a>
+      <a class="logo-open-edx" href="https://open.edx.org/" target="_blank">
+        <img src="https://d1d3mtskh6y3sd.cloudfront.net/powered-by/logo-open-edx.svg" alt="open edX">
+      </a>
+    </div>
+  </footer>
+</div>

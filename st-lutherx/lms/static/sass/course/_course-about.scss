@@ -1,0 +1,78 @@
+// ====================
+// Course About Page
+// ====================
+.content-wrapper {
+
+    .course-info {
+
+        header.course-profile {
+            padding: 0;
+
+            .intro-inner-wrapper {
+
+                .intro {
+
+                    .main-cta {
+
+                        a.register {
+                            background: var(--primary);
+                            border-color: var(--primary);
+                            color: $white;
+                            box-shadow: none;
+                            text-shadow: none;
+
+                            &:hover {
+                                background: var(--primary-darken-10p);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.find-courses {
+
+    .search-facets {
+
+        .facet-option {
+
+            &:hover {
+                background: var(--primary-darken-10p);
+            }
+        }
+    }
+
+    .discovery-input {
+
+        &:focus {
+            border-color: var(--primary-darken-10p);
+        }
+    }
+
+    .discovery-submit {
+        border-color: var(--primary-darken-10p);
+
+        &:hover {
+            background: var(--primary-darken-10p);
+        }
+    }
+}
+
+body {
+    .discussion-module ,
+    .wmd-prompt-dialog {
+
+        .btn {
+            border-color: var(--primary);
+            color: var(--primary);
+
+            &:focus,
+            &:hover {
+                border-color: var(--primary-darken-10p) !important;
+                background-color: var(--primary-darken-10p) !important;
+            }
+        }
+    }
+}

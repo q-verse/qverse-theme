@@ -1,0 +1,34 @@
+{
+  "name": "edly-edx-themes",
+  "version": "0.0.7",
+  "description": "Handles the themes of edx-platform",
+  "main": "index.js",
+  "scripts": {
+    "test-js": "eslint .",
+    "fix-js": "eslint . --fix",
+    "test-sass": "sass-lint -v -q"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edly-io/edly-edx-themes.git"
+  },
+  "author": "edly-team",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/edly-io/edly-edx-themes/issues"
+  },
+  "homepage": "https://github.com/edly-io/edly-edx-themes#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.13.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "sass-lint": "^1.13.1"
+  },
+  "dependencies": {
+    "progressbar.js": "^1.1.0"
+  }
+}

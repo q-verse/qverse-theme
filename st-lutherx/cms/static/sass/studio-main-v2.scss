@@ -1,0 +1,14 @@
+// ----vendor--------------------------
+// LMS main styling
+// Version 2 - introduces the Pattern Library
+
+// NOTE: This is the left-to-right (LTR) configured style compile.
+// It should mirror lms-main-v2-rtl w/ the exception of bi-app references.
+
+@import 'vendor/bi-app/bi-app-ltr'; // set the layout for left to right languages
+
+// Additional sass rules that should use for developers or temporarily styling purpose
+@import 'overrides';
+
+// Theme sass rules that must come at the end of the compilation for overriding purposes
+@import 'theme-style';

@@ -1,0 +1,312 @@
+// navbar
+// --------------------------------------------------
+.nav {
+
+    .nav-link {
+
+        &:hover,
+        &:focus {
+            outline: inherit;
+            border-bottom-color: transparent;
+        }
+    }
+}
+
+.hamburger-menu {
+    @include media-up(sm) {
+        display: none;
+    }
+    @include left($baseline*0.9);
+    position: absolute;
+    top: $baseline*0.8;
+    width: 30px;
+    height: 23px;
+    padding-bottom: $baseline/4;
+    background: none;
+    border: 0;
+    transform: rotate(0deg);
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+
+    .icon-bar {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: $gray-mid;
+        opacity: 1;
+        left: 0;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: 0.25s ease-in-out;
+        transition: 0.25s ease-in-out;
+
+        &:nth-child(1) {
+            top: 18px;
+            width: 0%;
+            left: 50%;
+        }
+
+        &:nth-child(2) {
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            top: $baseline/2;
+        }
+
+        &:nth-child(3) {
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            top: $baseline/2;
+        }
+
+        &:nth-child(4) {
+            top: 18px;
+            width: 0%;
+            left: 50%;
+        }
+    }
+
+    &.collapsed {
+
+        .icon-bar {
+
+            &:nth-child(1) {
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+
+            &:nth-child(2) {
+                -webkit-transform: rotate(0);
+                transform: rotate(0);
+            }
+
+            &:nth-child(3) {
+                -webkit-transform: rotate(0);
+                transform: rotate(0);
+            }
+
+            &:nth-child(4) {
+                top: $baseline;
+                left: 0;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.navbar-toggle {
+    @include float(left);
+}
+
+.navbar-default {
+
+    > .container {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px 14px;
+
+        .navbar-brand {
+            margin: 0;
+        }
+    }
+
+    .navbar-collapse {
+        margin-left: auto;
+    }
+}
+
+.navbar-nav {
+    font-size: 14px;
+    padding: 0;
+
+    > li {
+
+        > .nav-link {
+
+            .navbar-default & {
+                border: 0;
+                padding: 7px 20px;
+                background: none;
+                text-transform: uppercase;
+                color: $gray-darker;
+
+                &:hover,
+                &:focus {
+                    color: var(--primary);
+                }
+            }
+        }
+
+        .dropdown-toggle {
+
+            .navbar-default & {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .fa {
+                @include margin-left(6px);
+            }
+        }
+    }
+}
+
+.navbar {
+    margin-bottom: 0;
+    // Remove default Bootstrap navbar border styling
+    border-width: 0;
+    border-radius: 0;
+    box-shadow: $navbar-shadow;
+    min-height: 0;
+    @include media-down(sm) {
+        min-height: 63px;
+    }
+    @include media-down(xs) {
+        min-height: 56px;
+    }
+    // Add our own border
+    border-bottom: $navbar-border-bottom-width solid palette(primary, accent);
+
+    img {
+        @include margin(1px, 0, -1px, 5px);
+    }
+
+    .container {
+        width: auto;
+    }
+
+    // Vertically center the logo
+    .navbar-brand {
+        margin: 0;
+        padding: 0;
+        height: auto;
+
+        @include media-down(sm) {
+            margin: 0 auto;
+            float: none;
+            max-width: 200px;
+            height: 63px;
+        }
+        @include media-down(xs) {
+            max-width: 170px;
+            height: 56px;
+        }
+
+        &:active,
+        &:focus,
+        &:hover {
+            border-width: 0;
+        }
+
+        .navbar-brand-logo {
+            margin: 1px 0 0;
+            width: auto;
+            height: auto;
+            max-height: 70px;
+            max-width: 200px;
+            vertical-align: top;
+            @include media-down(sm) {
+                margin: 0 auto;
+                float: none;
+            }
+        }
+
+        .navbar-brand-app {
+            @include center-vertically;
+            display: inline-block;
+            top: 0;
+            color: palette(primary, accent);
+            font-weight: 600;
+        }
+    }
+}
+
+.administration-navbar {
+    padding: 10px;
+    border-bottom: 2px solid #CACACA;
+    background-color: #F6F6F6;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600;
+
+    .container {
+        background-color: #F6F6F6;
+    }
+
+    div {
+        a {
+            padding: 10px;
+            border-bottom-width: 0;
+            color: #0EA6EC;
+
+            &.selected,
+            &:active,
+            &:focus,
+            &:hover {
+                border-bottom: 4px solid #0EA6EC;
+                color: #000;
+            }
+        }
+    }
+}
+
+@media (min-width: $grid-float-breakpoint-max) {
+
+    .navbar {
+
+        .user-menu {
+            @include navbar-vertical-align($input-height-base);
+        }
+    }
+}
+
+.user-menu {
+
+    > .nav-button {
+        border-color: palette(grayscale, light);
+        color: palette(grayscale, dark);
+
+        &:hover,
+        &:focus {
+            color: palette(grayscale, white-t);
+
+            > .icon {
+                color: palette(grayscale, white-t);
+            }
+        }
+    }
+
+    .main-btn {
+        font-weight: bold;
+        color: palette(grayscale, x-dark);
+
+        .icon {
+            display: inline-block;
+            margin: 2px 6px -3px 3px;
+            float: left;
+            font-size: 1.2em;
+            color: palette(grayscale, base);
+        }
+    }
+}
+
+.dropdown-menu {
+
+    .nav-link {
+        // Disables default link behavior of pattern library on menu items
+        transition: none;
+
+        &:hover,
+        &:focus {
+            border-bottom-color: transparent;
+        }
+    }
+}
+
+header {
+
+    &.navbar {
+        border-bottom-color: var(--primary);
+    }
+}

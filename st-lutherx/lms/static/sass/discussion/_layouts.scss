@@ -1,0 +1,42 @@
+//
+// Layouts for discussion pages
+//
+.discussion {
+
+    .page-header,
+    .page-content {
+        @include media-down(md) {
+            @include padding-left(0);
+            @include padding-right(0);
+        }
+    }
+
+    .forum-search {
+        @include clearfix;
+    }
+
+    .forum-nav {
+        @include media-up(xs) {
+            width: 35%;
+        }
+        @include media-up(md) {
+            width: 30%;
+        }
+        @include media-up(lg) {
+            max-width: 300px;
+            width: 25%;
+        }
+    }
+
+    .discussion-column {
+        @include media-up(xs) {
+            width: 65%;
+        }
+        @include media-up(md) {
+            width: 70%;
+        }
+        @include media-up(lg) {
+            width: 75%;
+        }
+    }
+}

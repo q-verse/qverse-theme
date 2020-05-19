@@ -129,7 +129,7 @@
     % if uses_bootstrap:
     ## xss-lint: disable=mako-invalid-js-filter
 
-        <script type="text/javascript" src="${static.url('common/js/vendor/bootstrap.bundle.js')}"></script>
+    <script type="text/javascript" src="${static.url('common/js/vendor/bootstrap.bundle.js')}"></script>
     % endif
 
     <script>
@@ -321,14 +321,10 @@
 <body class="${static.dir_rtl()} <%block name='bodyclass'/> lang_${LANGUAGE_CODE}"
       data-nav-menu-url="${marketing_link('NAV_MENU')}"
       data-zendesk-widget-url="${marketing_link('ZENDESK-WIDGET')}"
-      data-services-notifications-url = "${services_notifications_url}"
-      data-session-cookie-domain = "${session_cookie_domain}"
-      data-services-notifications-cookie-expiry = "${services_notifications_cookie_expiry}"
       data-footer-url="${marketing_link('FOOTER')}">
 
     <%static:optional_include_mako file="body-initial.html" is_theming_enabled="True" />
 <div id="page-prompt"></div>
-<div id="services_notifications" class="suitewise-notifications-wrapper"></div>
 <div id="preload" class="loading">
     <ul class="loading-dots">
         <li></li>

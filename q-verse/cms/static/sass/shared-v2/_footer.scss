@@ -17,6 +17,12 @@
         &.primary {
             max-width: none;
             color: $color-gray-light;
+
+            .colophon {
+                float: none;
+                width: auto;
+                margin-right: 0;
+            }
         }
 
         .nav-legal,

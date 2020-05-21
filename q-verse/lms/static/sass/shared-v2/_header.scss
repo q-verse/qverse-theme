@@ -192,7 +192,10 @@
                 }
 
                 .dropdown-nav-item {
-                    @include media-up(md) { border-bottom: 1px solid $gray-lighter; }
+                    @include media-up(md) {
+                        border-bottom: 1px solid $gray-lighter;
+                        padding: 0;
+                    }
 
                     a {
 

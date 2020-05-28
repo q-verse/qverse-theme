@@ -28,9 +28,8 @@ from openedx.core.djangoapps.user_api.accounts.utils import is_secondary_email_f
 % endif
 
 <div class="page-hero-banner banner-account-settings">
-    <h2 class="page-banner-heading">${_("Account Settings")}</h2>
+   <h2 class="page-banner-heading">${_("Account Settings")}</h2>
 </div>
-
 <div class="wrapper-account-settings"></div>
 <%block name="headextra">
     <%static:css group='style-course'/>
@@ -38,7 +37,7 @@ from openedx.core.djangoapps.user_api.accounts.utils import is_secondary_email_f
 </%block>
 
 <%block name="js_extra">
-<%static:require_module module_name="st-lutherx/js/student_account/views/edly_account_settings_factory" class_name="EdlyAccountSettingsFactory">
+<%static:require_module module_name="js/student_account/views/account_settings_factory" class_name="AccountSettingsFactory">
     var fieldsData = ${ fields | n, dump_js_escaped_json },
         ordersHistoryData = ${ order_history | n, dump_js_escaped_json },
         authData = ${ auth | n, dump_js_escaped_json },
@@ -55,7 +54,7 @@ from openedx.core.djangoapps.user_api.accounts.utils import is_secondary_email_f
         displayAccountDeletion = ${ enable_account_deletion | n, dump_js_escaped_json};
         isSecondaryEmailFeatureEnabled = ${ bool(is_secondary_email_feature_enabled_for_user(user)) | n, dump_js_escaped_json },
 
-    EdlyAccountSettingsFactory(
+    AccountSettingsFactory(
         fieldsData,
         ordersHistoryData,
         authData,
@@ -79,15 +78,16 @@ from openedx.core.djangoapps.user_api.accounts.utils import is_secondary_email_f
 </%static:require_module>
 
 <script type="text/javascript">
-    window.auth = ${ auth | n, dump_js_escaped_json };
-    window.isActive = ${ user.is_active | n, dump_js_escaped_json };
+     window.auth = ${ auth | n, dump_js_escaped_json };
+     window.isActive = ${ user.is_active | n, dump_js_escaped_json };
 </script>
 
 <script type="text/javascript" src="${static.url('js/smooth-scroll.js')}"></script>
 
-<%static:webpack entry="EdlyStudentAccountDeletionInitializer">
+<%static:webpack entry="StudentAccountDeletionInitializer">
 </%static:webpack>
 </%block>
+
 
 <%block name="header_extras">
     % for template_name in ["account_settings", "account_settings_section"]:

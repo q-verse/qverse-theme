@@ -15,6 +15,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
+    <script type="text/javascript">
+        var currency = "{{ settings.OSCAR_DEFAULT_CURRENCY }}";
+        var currency_symbol = "{{ settings.OSCAR_DEFAULT_CURRENCY_SYMBOL }}";
+    </script>
 
     {% compress css %}
         {% if main_css %}

@@ -137,7 +137,7 @@
                 </div>
             {% endif %}
 
-            <div class="payment-buttons" data-basket-id="{{ basket.id }}">
+            <div class="payment-buttons payment-button-back" data-basket-id="{{ basket.id }}">
                 {% if free_basket %}
                     <a href="{% url 'checkout:free-checkout' %}"
                        data-track-type="click"

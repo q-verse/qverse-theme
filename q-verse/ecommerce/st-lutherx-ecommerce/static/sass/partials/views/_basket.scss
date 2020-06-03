@@ -406,6 +406,11 @@
             }
         }
 
+	.payment-button-back {
+	      background: white;
+	      border-top: none;
+	}
+
         .verification-note {
             margin-top: 20px;
             border: 5px solid $gray-lightest;
